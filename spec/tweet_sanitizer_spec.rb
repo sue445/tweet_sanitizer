@@ -56,7 +56,7 @@ RSpec.describe TweetSanitizer do
   end
 
   describe ".remove_media_urls_in_tweet" do
-    subject {TweetSanitizer.remove_media_urls_in_tweet(tweet, tweet.text)}
+    subject { TweetSanitizer.remove_media_urls_in_tweet(tweet, tweet.text) }
 
     where do
       {

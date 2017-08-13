@@ -4,6 +4,15 @@ require "twitter"
 module TweetSanitizer
   # @param tweet [Twitter:Tweet]
   # @return [String]
+  def self.sanitize(tweet)
+    text = expand_urls_text(tweet)
+    text = remove_media_urls_in_tweet(tweet, text)
+    text = CGI.unescapeHTML(text)
+    text
+  end
+
+  # @param tweet [Twitter:Tweet]
+  # @return [String]
   def self.expand_urls_text(tweet)
     text = tweet.text.dup
     return text unless tweet.uris?

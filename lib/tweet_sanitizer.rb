@@ -14,4 +14,17 @@ module TweetSanitizer
       expanded[pos1, pos2] = uri.expanded_url
     end
   end
+
+  # @param tweet [Twitter:Tweet]
+  # @param text [String]
+  # @return [String]
+  def self.remove_media_urls_in_tweet(tweet, text)
+    text = text.dup
+    return text unless tweet.media?
+
+    tweet.media.each_with_object(text) do |media, t|
+      t.gsub!(media.url, "")
+      t.strip!
+    end
+  end
 end

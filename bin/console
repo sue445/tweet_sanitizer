@@ -3,12 +3,16 @@
 require "bundler/setup"
 require "tweet_sanitizer"
 
-# You can add fixtures and/or initialization code here to make experimenting
-# with your gem easier. You can also use a different console, if you like.
+require "dotenv"
+require "pry"
 
-# (If you use this, don't forget to add pry to your Gemfile!)
-# require "pry"
-# Pry.start
+Dotenv.load
 
-require "irb"
-IRB.start(__FILE__)
+@client = Twitter::REST::Client.new do |config|
+  config.consumer_key        = ENV["TWITTER_CONSUMER_KEY"]
+  config.consumer_secret     = ENV["TWITTER_CONSUMER_SECRET"]
+  config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
+  config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
+end
+
+Pry.start

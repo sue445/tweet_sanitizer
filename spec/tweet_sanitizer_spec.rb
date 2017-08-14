@@ -39,6 +39,7 @@ RSpec.describe TweetSanitizer do
 
     with_them do
       it { should eq expected }
+      it { expect { subject }.not_to change { tweet.text } }
     end
   end
 
@@ -56,6 +57,7 @@ RSpec.describe TweetSanitizer do
 
     with_them do
       it { should eq expected }
+      it { expect { subject }.not_to change { tweet.text } }
     end
   end
 
@@ -77,6 +79,7 @@ RSpec.describe TweetSanitizer do
 
     with_them do
       it { should eq expected }
+      it { expect { subject }.not_to change { tweet.text } }
     end
   end
 
@@ -98,6 +101,7 @@ RSpec.describe TweetSanitizer do
 
     with_them do
       it { should eq expected }
+      it { expect { subject }.not_to change { tweet.text } }
     end
   end
 end

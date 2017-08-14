@@ -9,5 +9,6 @@ RSpec.describe TweetSanitizer::TwitterExtension do
     let(:tweet) { tweet1 }
 
     it { should eq "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” http://htn.to/RC5eJf" }
+    it { expect { subject }.not_to change { tweet.text } }
   end
 end

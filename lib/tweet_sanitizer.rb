@@ -28,7 +28,7 @@ module TweetSanitizer
   # @param tweet [Twitter:Tweet]
   # @return [String] `full_text` attribute if exist
   def self.tweet_full_text(tweet)
-    # NOTE: Tweet#full_text doesn't returns full_text attribute
+    # NOTE: Twitter::Tweet#full_text doesn't returns full_text attribute
     # https://github.com/sferik/twitter/blob/v6.1.0/lib/twitter/tweet.rb#L37-L44
     tweet.attrs[:full_text] || tweet.text
   end

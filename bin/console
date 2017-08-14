@@ -15,4 +15,6 @@ Dotenv.load
   config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
 end
 
+using TweetSanitizer::TwitterExtension
+
 Pry.start

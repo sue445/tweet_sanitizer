@@ -55,6 +55,27 @@ RSpec.describe TweetSanitizer do
     end
   end
 
+  describe ".tweet_full_text" do
+    subject { TweetSanitizer.tweet_full_text(tweet) }
+
+    where do
+      {
+        "https://twitter.com/sue445/status/866636479061147648" => {
+          tweet: tweet1,
+          expected: "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” https://t.co/vG7cvDAMEb",
+        },
+        "https://twitter.com/github/status/866677968608927744" => {
+          tweet: full_text_tweet_1,
+          expected: "Introducing GitHub Marketplace, a new place to browse and buy integrations using your GitHub account. https://t.co/mPTtAxnU5z https://t.co/Wz2mUql2lc",
+        },
+      }
+    end
+
+    with_them do
+      it { should eq expected }
+    end
+  end
+
   describe ".remove_media_urls_in_tweet" do
     subject { TweetSanitizer.remove_media_urls_in_tweet(tweet, tweet.text) }
 

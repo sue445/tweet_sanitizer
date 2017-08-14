@@ -30,6 +30,10 @@ RSpec.describe TweetSanitizer do
           tweet: tweet6,
           expected: "TeamOn for SAKURA\nhttp://www.sakura.ne.jp/function/teamon.html\n\nさくらで始めた、グループウェアのサービス。\n1ユーザー1ヶ月あたり、194円。最低5ユーザーから。\nウチで使うにはユーザー数が余るけどw、頭の片隅にでも。",
         },
+        "https://twitter.com/github/status/866677968608927744" => {
+          tweet: full_text_tweet_1,
+          expected: "Introducing GitHub Marketplace, a new place to browse and buy integrations using your GitHub account. https://github.com/blog/2359-introducing-github-marketplace-and-more-tools-to-customize-your-workflow",
+        },
       }
     end
 
@@ -46,6 +50,27 @@ RSpec.describe TweetSanitizer do
         "https://twitter.com/sue445/status/866636479061147648" => {
           tweet: tweet1,
           expected: "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” http://htn.to/RC5eJf",
+        },
+      }
+    end
+
+    with_them do
+      it { should eq expected }
+    end
+  end
+
+  describe ".tweet_full_text" do
+    subject { TweetSanitizer.tweet_full_text(tweet) }
+
+    where do
+      {
+        "https://twitter.com/sue445/status/866636479061147648" => {
+          tweet: tweet1,
+          expected: "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” https://t.co/vG7cvDAMEb",
+        },
+        "https://twitter.com/github/status/866677968608927744" => {
+          tweet: full_text_tweet_1,
+          expected: "Introducing GitHub Marketplace, a new place to browse and buy integrations using your GitHub account. https://t.co/mPTtAxnU5z https://t.co/Wz2mUql2lc",
         },
       }
     end

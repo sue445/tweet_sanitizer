@@ -1,8 +1,26 @@
 # TweetSanitizer
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tweet_sanitizer`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is extension of [twitter](https://github.com/sferik/twitter). Sanitize `Twitter::Tweet#text`
 
-TODO: Delete this and the text above, and describe your gem
+## Example
+```ruby
+tweet = @client.status("https://twitter.com/github/status/866677968608927744")
+tweet.text
+#=> "Introducing GitHub Marketplace, a new place to browse and buy integrations using your GitHub account.… https://t.co/dK0Tmcmm72"
+```
+
+```ruby
+using TweetSanitizer::TwitterExtension
+
+extended_tweet = @client.status("https://twitter.com/github/status/866677968608927744", tweet_mode: "extended")
+extended_tweet.sanitized_text
+#=> "Introducing GitHub Marketplace, a new place to browse and buy integrations using your GitHub account. https://github.com/blog/2359-introducing-github-marketplace-and-more-tools-to-customize-your-workflow"
+```
+
+## Features
+* Expand urls in `Twitter::Tweet#text` (e.g. `t.co` url -> original url)
+* Remove media urls in `Twitter::Tweet#text`
+* Unescape special html characters in `Twitter::Tweet#text` (e.g. `(&gt; &lt;)` -> `(> <)`)
 
 ## Installation
 
@@ -21,8 +39,28 @@ Or install it yourself as:
     $ gem install tweet_sanitizer
 
 ## Usage
+### Case 1. Use `TweetSanitizer::TwitterExtension` and `Twitter::Tweet#sanitized_text` (Recommended)
+```ruby
+using TweetSanitizer::TwitterExtension
 
-TODO: Write usage instructions here
+extended_tweet = @client.status("https://twitter.com/github/status/866677968608927744", tweet_mode: "extended")
+extended_tweet.sanitized_text
+```
+
+### Case 2. Use `TweetSanitizer.sanitize`
+```ruby
+extended_tweet = @client.status("https://twitter.com/github/status/866677968608927744", tweet_mode: "extended")
+TweetSanitizer.sanitize(extended_tweet)
+```
+
+### :warning: Note
+When you get `Twitter::Tweet` instance, pass `tweet_mode: "extended"` option to methods. (e.g. `Twitter::REST::Client#status`, `Twitter::REST::Client#search`)
+
+Because `full_text` attribute is returned when **only** `tweet_mode=extended` is passed to Twitter API
+
+See following.
+
+https://dev.twitter.com/overview/api/upcoming-changes-to-tweets
 
 ## Development
 
@@ -39,7 +77,7 @@ vi .env
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tweet_sanitizer.
+Bug reports and pull requests are welcome on GitHub at https://github.com/sue445/tweet_sanitizer.
 
 ## License
 

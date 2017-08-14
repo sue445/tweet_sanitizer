@@ -1,5 +1,6 @@
-require "tweet_sanitizer/version"
 require "twitter"
+require "tweet_sanitizer/version"
+require "tweet_sanitizer/twitter_extension"
 
 module TweetSanitizer
   # @param tweet [Twitter:Tweet]

@@ -15,7 +15,7 @@ module TweetSanitizer
   # @param tweet [Twitter:Tweet]
   # @return [String]
   def self.expand_urls_text(tweet)
-    text = tweet.text.dup
+    text = tweet_full_text(tweet).dup
     return text unless tweet.uris?
 
     tweet.uris.reverse.each_with_object(text) do |uri, expanded|

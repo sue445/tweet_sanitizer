@@ -31,7 +31,7 @@ RSpec.describe TweetSanitizer do
           expected: "TeamOn for SAKURA\nhttp://www.sakura.ne.jp/function/teamon.html\n\nさくらで始めた、グループウェアのサービス。\n1ユーザー1ヶ月あたり、194円。最低5ユーザーから。\nウチで使うにはユーザー数が余るけどw、頭の片隅にでも。",
         },
         "https://twitter.com/github/status/866677968608927744" => {
-          tweet: full_text_tweet_1,
+          tweet: full_text_tweet1,
           expected: "Introducing GitHub Marketplace, a new place to browse and buy integrations using your GitHub account. https://github.com/blog/2359-introducing-github-marketplace-and-more-tools-to-customize-your-workflow",
         },
       }
@@ -71,7 +71,7 @@ RSpec.describe TweetSanitizer do
           expected: "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” https://t.co/vG7cvDAMEb",
         },
         "https://twitter.com/github/status/866677968608927744" => {
-          tweet: full_text_tweet_1,
+          tweet: full_text_tweet1,
           expected: "Introducing GitHub Marketplace, a new place to browse and buy integrations using your GitHub account. https://t.co/mPTtAxnU5z https://t.co/Wz2mUql2lc",
         },
       }

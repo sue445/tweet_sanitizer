@@ -135,7 +135,7 @@ module StubUtil
   end
 
   # https://twitter.com/github/status/866677968608927744
-  def full_text_tweet_1
+  def full_text_tweet1
     Twitter::Tweet.new(
       id: 866677968608927744,
       full_text: "Introducing GitHub Marketplace, a new place to browse and buy integrations using your GitHub account. https://t.co/mPTtAxnU5z https://t.co/Wz2mUql2lc",

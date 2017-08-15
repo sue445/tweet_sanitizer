@@ -1,4 +1,5 @@
 # TweetSanitizer
+[![Gem Version](https://badge.fury.io/rb/tweet_sanitizer.svg)](https://badge.fury.io/rb/tweet_sanitizer)
 
 This is extension of [twitter](https://github.com/sferik/twitter). Sanitize `Twitter::Tweet#text`
 

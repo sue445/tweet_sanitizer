@@ -10,10 +10,11 @@ bundler_args: "--jobs=2"
 cache: bundler
 before_install: gem install bundler -v 1.15.3
 before_script:
-- export CODECLIMATE_REPO_TOKEN=
+- export CODECLIMATE_REPO_TOKEN=b275edefb84b9adf2e55846adb2c2649072895873f85eacafff3cb9a31aec846
 - export CI=true
 script:
 - bundle exec rspec
+- bundle exec codeclimate-test-reporter
 branches:
   only:
   - master

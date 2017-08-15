@@ -1,6 +1,8 @@
 # TweetSanitizer
 [![Gem Version](https://badge.fury.io/rb/tweet_sanitizer.svg)](https://badge.fury.io/rb/tweet_sanitizer)
 [![Build Status](https://travis-ci.org/sue445/tweet_sanitizer.svg?branch=master)](https://travis-ci.org/sue445/tweet_sanitizer)
+[![Code Climate](https://codeclimate.com/github/sue445/tweet_sanitizer.png)](https://codeclimate.com/github/sue445/tweet_sanitizer)
+[![Coverage Status](https://coveralls.io/repos/github/sue445/tweet_sanitizer/badge.svg?branch=master)](https://coveralls.io/github/sue445/tweet_sanitizer?branch=master)
 
 This is extension of [twitter](https://github.com/sferik/twitter). Sanitize `Twitter::Tweet#text`
 

@@ -76,7 +76,7 @@ vi .env
 ```
 
 ```ruby
-[1] pry(main)> @client.status("https://twitter.com/sue445/status/896748477262082049")
+[1] pry(main)> @client.status("https://twitter.com/sue445/status/896748477262082049", tweet_mode: "extended")
 => #<Twitter::Tweet id=896748477262082049>
 ```
 

@@ -34,6 +34,10 @@ RSpec.describe TweetSanitizer do
           tweet: full_text_tweet1,
           expected: "Introducing GitHub Marketplace, a new place to browse and buy integrations using your GitHub account. https://github.com/blog/2359-introducing-github-marketplace-and-more-tools-to-customize-your-workflow",
         },
+        "https://twitter.com/TwitterJP/status/897378954415194115" => {
+          tweet: retweet_full_text_tweet1,
+          expected: "【今週の一枚】皆既日食をわかりやすく解説する動画ができました。太陽と月の「見かけの大きさ」がほぼ同じという偶然が織りなす皆既日食の感動を、美しい映像と音楽で味わってください https://buff.ly/2w5HgaH #国立天文台",
+        },
       }
     end
 

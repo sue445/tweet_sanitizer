@@ -6,6 +6,9 @@ module TweetSanitizer
   # @param tweet [Twitter:Tweet]
   # @return [String]
   def self.sanitize(tweet)
+    # Original RT status is exists in retweeted_status
+    tweet = Twitter::Tweet.new(tweet.attrs[:retweeted_status]) if tweet.attrs[:retweeted_status]
+
     text = expand_urls_text(tweet)
     text = remove_media_urls_in_tweet(tweet, text)
     text = CGI.unescapeHTML(text)

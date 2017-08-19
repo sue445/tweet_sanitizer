@@ -1,4 +1,4 @@
-module StubUtil
+module FixtureUtil
   require "yaml"
 
   def tweet_fixture(fixture_name)

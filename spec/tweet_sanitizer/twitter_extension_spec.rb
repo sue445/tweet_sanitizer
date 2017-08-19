@@ -4,7 +4,7 @@ RSpec.describe TweetSanitizer::TwitterExtension do
 
     using TweetSanitizer::TwitterExtension
 
-    include StubUtil
+    include FixtureUtil
 
     let(:tweet) { tweet_fixture("tweet1") }
 

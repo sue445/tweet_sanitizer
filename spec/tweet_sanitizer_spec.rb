@@ -1,4 +1,4 @@
-include StubUtil
+include FixtureUtil
 
 RSpec.describe TweetSanitizer do
   describe ".sanitize" do

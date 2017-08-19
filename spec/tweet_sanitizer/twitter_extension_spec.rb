@@ -6,7 +6,7 @@ RSpec.describe TweetSanitizer::TwitterExtension do
 
     include StubUtil
 
-    let(:tweet) { tweet1 }
+    let(:tweet) { tweet_fixture("tweet1") }
 
     it { should eq "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” http://htn.to/RC5eJf" }
     it { expect { subject }.not_to change { tweet.text } }

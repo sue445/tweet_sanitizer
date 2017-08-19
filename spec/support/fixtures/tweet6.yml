@@ -1,0 +1,21 @@
+# https://twitter.com/pooza/status/875503517322149888
+---
+:id: 875503517322149888
+:text: |-
+  TeamOn for SAKURA
+  https://t.co/7iF72IhI6u
+
+  さくらで始めた、グループウェアのサービス。
+  1ユーザー1ヶ月あたり、194円。最低5ユーザーから。
+  ウチで使うにはユーザー数が余るけどw、頭の片隅にでも。
+:entities:
+  :hashtags: []
+  :symbols: []
+  :user_mentions: []
+  :urls:
+  - :url: https://t.co/7iF72IhI6u
+    :expanded_url: http://www.sakura.ne.jp/function/teamon.html
+    :display_url: sakura.ne.jp/function/teamo…
+    :indices:
+    - 18
+    - 41

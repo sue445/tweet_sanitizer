@@ -3,22 +3,30 @@ require "tweet_sanitizer/version"
 require "tweet_sanitizer/twitter_extension"
 
 module TweetSanitizer
+  # Sanitize tweet
   # @param tweet [Twitter:Tweet]
+  # @param use_retweeted_tweet [Boolean] Whether use original retweeted tweet if exists
+  # @param expand_url          [Boolean] Whether expand url in tweet (e.g. `t.co` url -> original url)
+  # @param remove_media_url    [Boolean] Whether remove media url in tweet
+  # @param unescape            [Boolean] Whether unescape in tweet (e.g. `(&gt; &lt;)` -> `(> <)`)
   # @return [String]
-  def self.sanitize(tweet)
+  def self.sanitize(tweet, use_retweeted_tweet: true, expand_url: true, remove_media_url: true, unescape: true)
     # Original RT status is exists in retweeted_status
-    tweet = Twitter::Tweet.new(tweet.attrs[:retweeted_status]) if tweet.attrs[:retweeted_status]
+    if use_retweeted_tweet && tweet.attrs[:retweeted_status]
+      tweet = Twitter::Tweet.new(tweet.attrs[:retweeted_status])
+    end
 
-    text = expand_urls_text(tweet)
-    text = remove_media_urls_in_tweet(tweet, text)
-    text = CGI.unescapeHTML(text)
+    text = tweet_full_text(tweet)
+    text = expand_urls_text(tweet, text) if expand_url
+    text = remove_media_urls_in_tweet(tweet, text) if remove_media_url
+    text = CGI.unescapeHTML(text) if unescape
     text
   end
 
   # @param tweet [Twitter:Tweet]
+  # @param text [String]
   # @return [String]
-  def self.expand_urls_text(tweet)
-    text = tweet_full_text(tweet)
+  def self.expand_urls_text(tweet, text)
     return text unless tweet.uris?
 
     tweet.uris.reverse.each_with_object(text.dup) do |uri, expanded|

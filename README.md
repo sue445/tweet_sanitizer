@@ -67,6 +67,40 @@ See following.
 
 https://dev.twitter.com/overview/api/upcoming-changes-to-tweets
 
+### Options
+Same to `Twitter::Tweet#sanitized_text` and `TweetSanitizer.sanitize`. (By default all are `true`)
+
+* `use_retweeted_tweet` : Whether use original retweeted tweet if exists
+* `expand_url` : Whether expand url in tweet (e.g. `t.co` url -> original url)
+* `remove_media_url` : Whether remove media url in tweet
+* `unescape` : Whether unescape in tweet (e.g. `(&gt; &lt;)` -> `(> <)`)
+
+#### Example
+
+```ruby
+tweet = @client.status("https://twitter.com/github/status/900456141557080065", tweet_mode: "extended")
+
+# all are false
+tweet.sanitized_text(use_retweeted_tweet: false, expand_url: false, remove_media_url: false, unescape: false)
+#=> "RT @GitHubEducation: Announcing two new GitHub Classroom features: Assignment Deadlines and Class Rosters: https://t.co/bNiJnlps5e https://…"
+
+# Only use_retweeted_tweet is true
+tweet.sanitized_text(use_retweeted_tweet: true, expand_url: false, remove_media_url: false, unescape: false)
+#=> "Announcing two new GitHub Classroom features: Assignment Deadlines and Class Rosters: https://t.co/bNiJnlps5e https://t.co/C02G05tUvu"
+
+# Only expand_url is true
+tweet.sanitized_text(use_retweeted_tweet: false, expand_url: true, remove_media_url: false, unescape: false)
+#=> "RT @GitHubEducation: Announcing two new GitHub Classroom features: Assignment Deadlines and Class Rosters: https://github.com/blog/2418-github-classroom-now-supports-deadlines-and-class-rosters https://…"
+
+# Only remove_media_url is true
+tweet.sanitized_text(use_retweeted_tweet: false, expand_url: false, remove_media_url: true, unescape: false)
+#=> "RT @GitHubEducation: Announcing two new GitHub Classroom features: Assignment Deadlines and Class Rosters: https://t.co/bNiJnlps5e https://…"
+
+# all are true (default)
+tweet.sanitized_text
+#=> "Announcing two new GitHub Classroom features: Assignment Deadlines and Class Rosters: https://github.com/blog/2418-github-classroom-now-supports-deadlines-and-class-rosters"
+```
+
 ## Development
 
 ```bash

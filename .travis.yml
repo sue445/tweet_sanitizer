@@ -13,11 +13,13 @@ before_install:
   - gem update --system --no-document
   - gem install bundler -v 1.16.1 --no-document
 before_script:
-  - export CODECLIMATE_REPO_TOKEN=b275edefb84b9adf2e55846adb2c2649072895873f85eacafff3cb9a31aec846
-  - export CI=true
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - bundle exec rspec
-  - bundle exec codeclimate-test-reporter
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 branches:
   only:
     - master
@@ -28,3 +30,6 @@ notifications:
 matrix:
   allow_failures:
     - rvm: ruby-head
+env:
+  global:
+    - CC_TEST_REPORTER_ID=b275edefb84b9adf2e55846adb2c2649072895873f85eacafff3cb9a31aec846

@@ -1,5 +1,11 @@
 ## Unreleased
-[full changelog](https://github.com/sue445/tweet_sanitizer/compare/v0.2.1...master)
+[full changelog](https://github.com/sue445/tweet_sanitizer/compare/v0.2.2...master)
+
+## v0.2.2
+[full changelog](https://github.com/sue445/tweet_sanitizer/compare/v0.2.1...v0.2.2)
+
+* Fix TypeError no implicit conversion of nil into String (TypeError)
+  * https://github.com/sue445/tweet_sanitizer/pull/56
 
 ## v0.2.1
 [full changelog](https://github.com/sue445/tweet_sanitizer/compare/v0.2.0...v0.2.1)

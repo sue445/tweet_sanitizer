@@ -32,7 +32,7 @@ module TweetSanitizer
     tweet.uris.reverse.each_with_object(text.dup) do |uri, expanded|
       pos1 = uri.indices[0]
       pos2 = uri.indices[1]
-      expanded[pos1, pos2-pos1] = uri.expanded_url
+      expanded[pos1, pos2-pos1] = uri.expanded_url if uri.expanded_url
     end
   end
 

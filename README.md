@@ -1,3 +1,7 @@
+> [!WARNING]
+> This is already not maintained. 
+> Please use https://github.com/sue445/x_post_sanitizer instead.
+
 # TweetSanitizer
 [![Gem Version](https://badge.fury.io/rb/tweet_sanitizer.svg)](https://badge.fury.io/rb/tweet_sanitizer)
 [![test](https://github.com/sue445/tweet_sanitizer/actions/workflows/test.yml/badge.svg)](https://github.com/sue445/tweet_sanitizer/actions/workflows/test.yml)
